@@ -8,7 +8,12 @@ export default function Contact() {
   return (
     <section id="contact" className="section">
       <div className="container">
-        <SectionHead kicker="Contact" title="Let's Build" dim="Together" />
+        <SectionHead
+          kicker="Real-Time Contact"
+          title="Let's Build"
+          dim="Together"
+          lead="Connect directly in real time. No waiting on database queues — speak directly with the founder via WhatsApp or direct email."
+        />
         <div className="contact-grid">
           <Reveal><ContactForm idPrefix="contact" /></Reveal>
           <Reveal delay={120}>

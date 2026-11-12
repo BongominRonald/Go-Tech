@@ -280,6 +280,15 @@ button { cursor: pointer; background: none; border: 0; }
 /* ---------- Contact ---------- */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
 .form { display: grid; gap: 22px; }
+.realtime-selector-wrap { display: flex; flex-direction: column; gap: 8px; padding-bottom: 6px; }
+.realtime-label { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.realtime-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.realtime-btn { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border: 1px solid var(--line-2); background: rgba(255,255,255,.03); color: var(--muted); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; transition: all .2s; }
+.realtime-btn:hover { color: var(--white); border-color: #555; }
+.realtime-btn.active-wa { border-color: #25d366; background: rgba(37,211,102,.12); color: #25d366; }
+.realtime-btn.active-email { border-color: var(--blue); background: rgba(0,174,239,.12); color: var(--blue); }
+.btn-wa-action { background: #25d366 !important; color: #000 !important; border-color: #25d366 !important; font-weight: 700 !important; }
+.btn-wa-action:hover { background: #1ebc57 !important; border-color: #1ebc57 !important; }
 .field label { display: block; margin-bottom: 8px; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.7); }
 .field label em { color: var(--blue); font-style: normal; margin-left: 4px; }
 .field input, .field textarea, .field select { width: 100%; padding: 14px; background: rgba(255,255,255,.04); border: 2px solid var(--line-2); color: var(--white); transition: border-color .2s; border-radius: 0; }

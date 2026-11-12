@@ -21,28 +21,30 @@ Developed for **Bongomin Ronald** (Founder & Lead Developer, Mbarara, Uganda).
 
 - **Frontend**: React 19, Vite, React Router 7, Lucide Icons
 - **Design & Typography**: Pure Black (`#000000`), Pure White (`#ffffff`), Go-Tech Electric Blue (`#00AEEF`), Inter typography
-- **Backend**: Node.js, Express, CORS
-- **Database**: PostgreSQL (`charmsolutions` DB with `contact_messages` table), with local JSONL persistence fallback
+- **Real-Time Communication (Zero Database)**:
+  - Instant WhatsApp direct chat dispatch (`+256 774 120 185`)
+  - Direct formatted email dispatch (`abonga029@gmail.com`)
+  - Real-time client-side formatting — no database bottlenecks or server delays
+- **Optional Backend**: Node.js, Express (lightweight real-time API)
 
 ---
 
 ## 🏃 Getting Started
 
-### 1. Backend Server Setup
-```bash
-cd server
-npm install
-npm start
-```
-*The server will run on `http://localhost:5000` and automatically connect to PostgreSQL.*
-
-### 2. Frontend Client Setup
+### 1. Frontend Client
 ```bash
 cd client
 npm install
 npm run dev
 ```
-*The client will run on `http://localhost:5173`.*
+*The client will run on `http://localhost:5173`. Works 100% standalone and can be deployed directly to Vercel, Netlify, or GitHub Pages with zero database configuration.*
+
+### 2. Optional Express Service
+```bash
+cd server
+npm install
+npm start
+```
 
 ---
 

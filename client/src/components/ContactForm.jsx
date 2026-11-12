@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Send } from 'lucide-react'
-import { pricing } from '../data/site.js'
+import { Send, Mail, MessageSquare, CheckCircle2 } from 'lucide-react'
+import { pricing, site } from '../data/site.js'
+import { WhatsAppIcon } from './icons.jsx'
 
 const empty = { name: '', email: '', phone: '', service: '', message: '' }
 
@@ -16,32 +17,72 @@ function validate(f) {
 export default function ContactForm({ defaultService = '', idPrefix = 'c', onSent }) {
   const [form, setForm] = useState({ ...empty, service: defaultService })
   const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState('idle') // idle | sending | ok | bad
-  const [msg, setMsg] = useState('')
+  const [status, setStatus] = useState('idle') // idle | ok
+  const [method, setMethod] = useState('whatsapp') // whatsapp | email
 
   const set = (k) => (e) => setForm({ ...form, [k]: e.target.value })
 
-  const submit = async (e) => {
-    e.preventDefault()
+  // Build clean real-time message text
+  const buildMessageText = () => {
+    return [
+      `*New Inquiry — ${site.name} (${site.tagline})*`,
+      ``,
+      `👤 *Name:* ${form.name.trim()}`,
+      `📧 *Email:* ${form.email.trim()}`,
+      `📱 *Phone / WhatsApp:* ${form.phone.trim() || 'Not provided'}`,
+      `💼 *Service:* ${form.service || 'General Inquiry'}`,
+      ``,
+      `💬 *Message:*`,
+      form.message.trim(),
+    ].join('\n')
+  }
+
+  // Real-time WhatsApp dispatch (Zero database needed)
+  const sendWhatsApp = (e) => {
+    if (e) e.preventDefault()
     const errs = validate(form)
     setErrors(errs)
     if (Object.keys(errs).length) return
-    setStatus('sending')
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      })
-      const data = await res.json().catch(() => ({}))
-      if (!res.ok) throw new Error(data.error || 'Request failed')
-      setStatus('ok')
-      setMsg("Thank you. We'll reply within 24 hours.")
-      setForm({ ...empty, service: defaultService })
-      onSent?.()
-    } catch {
-      setStatus('bad')
-      setMsg('Something went wrong. Please try again, or reach us on WhatsApp.')
+
+    const text = buildMessageText()
+    const waUrl = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`
+    window.open(waUrl, '_blank', 'noopener,noreferrer')
+
+    setStatus('ok')
+    onSent?.()
+  }
+
+  // Real-time Direct Email dispatch (Zero database needed)
+  const sendEmail = (e) => {
+    if (e) e.preventDefault()
+    const errs = validate(form)
+    setErrors(errs)
+    if (Object.keys(errs).length) return
+
+    const subject = `Go-Tech Inquiry from ${form.name.trim()}${form.service ? ` [${form.service}]` : ''}`
+    const body = [
+      `Name: ${form.name.trim()}`,
+      `Email: ${form.email.trim()}`,
+      `Phone / WhatsApp: ${form.phone.trim() || 'Not provided'}`,
+      `Service: ${form.service || 'General Inquiry'}`,
+      ``,
+      `Message:`,
+      form.message.trim(),
+    ].join('\n')
+
+    const mailtoUrl = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    window.location.href = mailtoUrl
+
+    setStatus('ok')
+    onSent?.()
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (method === 'whatsapp') {
+      sendWhatsApp(e)
+    } else {
+      sendEmail(e)
     }
   }
 
@@ -56,23 +97,62 @@ export default function ContactForm({ defaultService = '', idPrefix = 'c', onSen
   )
 
   return (
-    <form className="form" onSubmit={submit} noValidate>
+    <form className="form" onSubmit={handleSubmit} noValidate>
+      {/* Real-time delivery method selector */}
+      <div className="realtime-selector-wrap">
+        <span className="realtime-label">Choose Real-Time Contact Channel:</span>
+        <div className="realtime-toggle">
+          <button
+            type="button"
+            className={`realtime-btn ${method === 'whatsapp' ? 'active-wa' : ''}`}
+            onClick={() => setMethod('whatsapp')}
+          >
+            <WhatsAppIcon /> Instant WhatsApp
+          </button>
+          <button
+            type="button"
+            className={`realtime-btn ${method === 'email' ? 'active-email' : ''}`}
+            onClick={() => setMethod('email')}
+          >
+            <Mail size={15} /> Direct Email
+          </button>
+        </div>
+      </div>
+
       {field('name', 'Name', { placeholder: 'Your name' }, true)}
       {field('email', 'Email', { type: 'email', placeholder: 'your.email@example.com' }, true)}
       {field('phone', 'Phone / WhatsApp', { type: 'tel', placeholder: '+256 7xx xxx xxx' })}
+
       <div className="field">
-        <label htmlFor={`${idPrefix}-service`}>Service</label>
+        <label htmlFor={`${idPrefix}-service`}>Service Required</label>
         <select id={`${idPrefix}-service`} value={form.service} onChange={set('service')}>
-          <option value="">Not sure yet</option>
+          <option value="">Select a service (optional)</option>
           {pricing.map((p) => <option key={p.id} value={p.name}>{p.name}</option>)}
         </select>
       </div>
-      {field('message', 'Message', { as: 'textarea', placeholder: 'Tell us about your project...' }, true)}
-      <button type="submit" className="btn btn-solid btn-block" disabled={status === 'sending'}>
-        {status === 'sending' ? 'Sending...' : <>Send Message <Send /></>}
-      </button>
-      {(status === 'ok' || status === 'bad') && (
-        <div className={`form-msg ${status}`} role="status">{msg}</div>
+
+      {field('message', 'Project Details', { as: 'textarea', placeholder: 'Tell us what you want to build...' }, true)}
+
+      {/* Action buttons */}
+      <div className="form-action-row">
+        {method === 'whatsapp' ? (
+          <button type="submit" className="btn btn-solid btn-block btn-wa-action">
+            <WhatsAppIcon /> Send via WhatsApp (Instant Live Chat)
+          </button>
+        ) : (
+          <button type="submit" className="btn btn-solid btn-block">
+            <Mail size={16} /> Send via Direct Email <Send size={14} />
+          </button>
+        )}
+      </div>
+
+      {status === 'ok' && (
+        <div className="form-msg ok" role="status" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <CheckCircle2 size={18} style={{ color: 'var(--blue)', flexShrink: 0 }} />
+          <div>
+            <strong>Message Formatted!</strong> Opening your {method === 'whatsapp' ? 'WhatsApp' : 'Email'} client to deliver directly to {site.founder} in real time.
+          </div>
+        </div>
       )}
     </form>
   )

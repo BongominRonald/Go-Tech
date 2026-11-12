@@ -27,7 +27,7 @@ export function ContactModalProvider({ children }) {
           <div className="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
             <button className="modal-x" onClick={close} aria-label="Close contact form"><X size={18} /></button>
             <h3 id="modal-title">Let's build yours<span className="text-blue">.</span></h3>
-            <p className="note">A real person reads every message. We usually reply within 24 hours.</p>
+            <p className="note">Instant real-time response. Connect directly via WhatsApp or direct email.</p>
             <ContactForm idPrefix="m" defaultService={state.service} />
             <div className="modal-foot">
               Prefer to talk? Call <a href={tel(site.phones[0])}>{site.phones[0]}</a> or{' '}

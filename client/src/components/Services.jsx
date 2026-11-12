@@ -1,6 +1,7 @@
-﻿import { Code2, Palette, TrendingUp, ArrowUpRight } from 'lucide-react'
+﻿import { Code2, Palette, TrendingUp, ArrowUpRight, ExternalLink } from 'lucide-react'
 import { Reveal, SectionHead } from './ui.jsx'
-import { services } from '../data/site.js'
+import { services, site } from '../data/site.js'
+import { BehanceIcon } from './icons.jsx'
 
 const icons = { web: Code2, graphic: Palette, seo: TrendingUp }
 
@@ -13,23 +14,34 @@ export default function Services() {
         <div className="grid-3">
           {services.map((s, idx) => {
             const Icon = icons[s.id]
+            const isGraphic = s.id === 'graphic'
             return (
               <Reveal as="article" key={s.id} delay={idx * 100}>
-                <a href={s.href} className="svc">
-                  <div className="svc-img">
-                    <img src={s.image} alt="" loading="lazy" />
+                <div className="svc">
+                  <div className="svc-top-bar">
                     <span className="svc-num">0{idx + 1}</span>
+                    <div className="svc-icon"><Icon size={22} /></div>
                   </div>
                   <div className="svc-body">
-                    <div className="svc-head">
-                      <div className="svc-icon"><Icon size={20} /></div>
-                      <h3>{s.title}</h3>
-                    </div>
+                    <h3>{s.title}</h3>
                     <p className="need">{s.need}</p>
                     <p className="why">{s.why}</p>
-                    <span className="more">See pricing <ArrowUpRight size={14} /></span>
+                    {isGraphic ? (
+                      <a
+                        href={site.behance}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="more svc-behance-link"
+                      >
+                        <BehanceIcon size={14} /> View Work on Behance <ExternalLink size={13} />
+                      </a>
+                    ) : (
+                      <a href={s.href} className="more">
+                        See pricing <ArrowUpRight size={14} />
+                      </a>
+                    )}
                   </div>
-                </a>
+                </div>
               </Reveal>
             )
           })}

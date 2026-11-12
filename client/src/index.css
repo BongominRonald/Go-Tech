@@ -156,22 +156,20 @@ button { cursor: pointer; background: none; border: 0; }
 
 /* ---------- Services ---------- */
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.svc { display: flex; flex-direction: column; border: 1px solid var(--line); background: #0a0a0a; transition: border-color .3s, transform .4s var(--ease); height: 100%; }
+.svc { display: flex; flex-direction: column; border: 1px solid var(--line); background: #080809; transition: border-color .3s, transform .4s var(--ease); height: 100%; padding: 34px 30px; position: relative; overflow: hidden; }
 .svc:hover { border-color: rgba(0,174,239,.45); transform: translateY(-6px); }
-.svc-img { position: relative; aspect-ratio: 16/10; overflow: hidden; background: #111; }
-.svc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); filter: saturate(.9); }
-.svc:hover .svc-img img { transform: scale(1.05); }
-.svc-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.65), transparent 55%); }
-.svc-num { position: absolute; z-index: 1; right: 18px; bottom: 10px; font-size: 3rem; font-weight: 800; color: rgba(255,255,255,.3); line-height: 1; }
-.svc-body { display: flex; flex-direction: column; gap: 14px; padding: 30px; flex: 1; }
-.svc-head { display: flex; align-items: center; gap: 16px; }
-.svc-icon { width: 44px; height: 44px; flex-shrink: 0; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.25); transition: all .3s; }
+.svc-top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.svc-num { font-size: 2.2rem; font-weight: 800; color: rgba(255,255,255,.2); line-height: 1; letter-spacing: -0.04em; }
+.svc-icon { width: 44px; height: 44px; flex-shrink: 0; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.03); color: var(--blue); transition: all .3s; }
 .svc:hover .svc-icon { background: var(--blue); border-color: var(--blue); color: #000; }
-.svc h3 { margin: 0; font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
-.svc .need { margin: 0; font-size: .95rem; color: rgba(255,255,255,.85); }
-.svc .why { margin: auto 0 0; font-size: .9rem; color: rgba(255,255,255,.45); }
-.svc .more { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: .25em; text-transform: uppercase; color: rgba(255,255,255,.4); transition: color .2s; }
+.svc-body { display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.svc h3 { margin: 0; font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; }
+.svc .need { margin: 0; font-size: .95rem; color: rgba(255,255,255,.85); line-height: 1.5; }
+.svc .why { margin: auto 0 0; font-size: .9rem; color: rgba(255,255,255,.45); line-height: 1.6; }
+.svc .more { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); transition: color .2s; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
 .svc:hover .more { color: var(--blue); }
+.svc-behance-link { color: var(--blue) !important; font-weight: 600; }
+.svc-behance-link:hover { color: var(--white) !important; }
 
 /* ---------- Browser frame (live sample) ---------- */
 .browser { border: 1px solid var(--line); background: #0a0a0a; overflow: hidden; transition: border-color .3s; }

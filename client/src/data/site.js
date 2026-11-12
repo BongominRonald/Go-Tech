@@ -33,7 +33,6 @@ export const services = [
     title: 'Website Design & Build',
     need: 'A website that turns visitors into calls and bookings.',
     why: 'Your website is your shopfront — the first thing customers see. We build it fast, mobile-first, and built to bring in calls and messages.',
-    image: '/graphics/new-week.jpg',
     href: '#pricing-standard',
   },
   {
@@ -41,15 +40,14 @@ export const services = [
     title: 'Graphic Design',
     need: 'Brand graphics that look sharp everywhere they land.',
     why: 'Flyers, posters and social media graphics that make your brand recognisable. Consistent, print-ready, and delivered in 48 hours — not 48 days.',
-    image: '/graphics/birthday-seanice.jpg',
-    href: '#pricing-graphic',
+    href: 'https://www.behance.net/bongominronald',
+    external: true,
   },
   {
     id: 'seo',
     title: 'Online Visibility',
     need: 'Get found on Google, Maps and search when it matters.',
     why: 'Either you are found, or you are not. We set up Google Maps, search and analytics so customers actually reach you.',
-    image: '/graphics/exam-wishes.png',
     href: '#pricing-seo',
   },
 ]

@@ -2,7 +2,7 @@
 import ContactForm from './ContactForm.jsx'
 import { Reveal, SectionHead } from './ui.jsx'
 import { site, tel, whatsappLink } from '../data/site.js'
-import { WhatsAppIcon, GithubIcon, LinkedinIcon } from './icons.jsx'
+import { WhatsAppIcon, GithubIcon, LinkedinIcon, BehanceIcon } from './icons.jsx'
 
 export default function Contact() {
   return (
@@ -38,6 +38,7 @@ export default function Contact() {
               <small style={{ display: 'block', marginBottom: 12, fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,.6)' }}>Social</small>
               <div className="socials">
                 <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><WhatsAppIcon /></a>
+                <a href={site.behance} target="_blank" rel="noopener noreferrer" aria-label="Behance"><BehanceIcon /></a>
                 <a href={site.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"><GithubIcon /></a>
                 <a href={site.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><LinkedinIcon /></a>
               </div>

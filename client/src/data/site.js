@@ -11,6 +11,7 @@ export const site = {
   whatsapp: '256774120185',
   github: 'https://github.com/abonga029',
   linkedin: 'https://www.linkedin.com/in/abonga029',
+  behance: 'https://www.behance.net/bongominronald',
 }
 
 export const tel = (p) => `tel:${p.replace(/\s/g, '')}`
@@ -143,13 +144,4 @@ export const projects = [
     features: ['Instant Computation', 'Subject Weight Rules', 'Course Mapping', 'High Mobile Traffic'],
     accent: '#f59e0b',
   },
-]
-
-export const graphics = [
-  { src: '/graphics/new-week.jpg', title: 'New Week Campaign' },
-  { src: '/graphics/birthday-seanice.jpg', title: 'Birthday Blessing' },
-  { src: '/graphics/exam-wishes.png', title: 'Exam Wishes' },
-  { src: '/graphics/birthday-adelin.png', title: 'Birthday Card' },
-  { src: '/graphics/roomify.png', title: 'Roomify App Promo' },
-  { src: '/graphics/birthday-atim.jpg', title: 'Celebration Poster' },
 ]

@@ -1,22 +1,9 @@
-﻿import { useState } from 'react'
-import { ExternalLink, X, ChevronLeft, ChevronRight, Eye, Globe, Lock, CheckCircle2 } from 'lucide-react'
+﻿import { ExternalLink, Globe, Lock, CheckCircle2, Sparkles, Palette } from 'lucide-react'
 import { Reveal, SectionHead } from '../components/ui.jsx'
-import { projects, graphics, site } from '../data/site.js'
+import { projects, site } from '../data/site.js'
+import { BehanceIcon } from '../components/icons.jsx'
 
 export default function Samples() {
-  const [activeImg, setActiveImg] = useState(null)
-
-  const openLightbox = (idx) => setActiveImg(idx)
-  const closeLightbox = () => setActiveImg(null)
-  const prevImg = (e) => {
-    e.stopPropagation()
-    setActiveImg((i) => (i > 0 ? i - 1 : graphics.length - 1))
-  }
-  const nextImg = (e) => {
-    e.stopPropagation()
-    setActiveImg((i) => (i < graphics.length - 1 ? i + 1 : 0))
-  }
-
   return (
     <div style={{ paddingTop: 90 }}>
       {/* Page Hero */}
@@ -29,19 +16,19 @@ export default function Samples() {
               Our Work,<br /><span className="dim">Built To Perform.</span>
             </h1>
             <p className="lead">
-              A curated directory of live web applications, e-commerce storefronts, and brand graphics engineered for real businesses. Click any project to view the live site.
+              Information on our production web applications, e-commerce storefronts, and creative brand design systems. Click 'View Live Site' on any project to inspect the live application in a new tab.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Web Projects Showcase (Clean cards with View The Site - NO iframes) */}
+      {/* Web Projects Showcase (Information Only with View Live Site in New Tab) */}
       <section className="section alt">
         <div className="container">
           <SectionHead
             kicker="Web Development"
             title="Live Websites &amp; Applications"
-            lead="Explore our deployed client systems. Click 'View The Site' to launch any application directly in a new tab."
+            lead="Review technical information and capabilities below. Open any application to see it live in a new tab."
           />
 
           <div className="grid-3">
@@ -88,7 +75,7 @@ export default function Samples() {
                         rel="noopener noreferrer"
                         className="btn btn-solid btn-block"
                       >
-                        View The Site <ExternalLink size={15} />
+                        View Live Site <ExternalLink size={15} />
                       </a>
                     </div>
                   </div>
@@ -99,56 +86,50 @@ export default function Samples() {
         </div>
       </section>
 
-      {/* Graphic Design Gallery */}
+      {/* Graphic Design Showcase (Live Behance Portfolio Integration) */}
       <section className="section">
         <div className="container">
           <SectionHead
-            kicker="Selected Graphics"
+            kicker="Creative &amp; Visual Design"
             title="Graphic &amp; Brand Design"
-            dim="Made to stop the scroll"
-            lead="Print-ready flyers, posters, and social media brand campaigns crafted for maximum impact and fast delivery."
+            dim="Live on Behance"
+            lead="Explore our verified creative portfolio on Behance — featuring digital logos, print-ready flyers, event posters, and brand campaigns."
           />
           <Reveal>
-            <div className="gallery">
-              {graphics.map((g, idx) => (
-                <button
-                  type="button"
-                  key={g.src}
-                  onClick={() => openLightbox(idx)}
-                  aria-label={`View ${g.title}`}
+            <div className="behance-showcase-card">
+              <div className="behance-content">
+                <div className="behance-badge-row">
+                  <span className="behance-pill">
+                    <BehanceIcon size={16} /> Official Behance Profile
+                  </span>
+                  <span className="tag">Creative Showcase</span>
+                </div>
+                <h3 className="behance-title">Bongomin Ronald — Creative Portfolio</h3>
+                <p className="behance-desc">
+                  All graphic design work, visual identity systems, promotional flyers, posters, and brand design assets are published and maintained live on Behance. Click below to inspect our full creative catalog in a new tab.
+                </p>
+                <div className="behance-tags">
+                  <span className="feature-pill"><Palette size={13} style={{ color: 'var(--blue)' }} /> Brand Identities</span>
+                  <span className="feature-pill"><Sparkles size={13} style={{ color: 'var(--blue)' }} /> Promotional Flyers</span>
+                  <span className="feature-pill"><CheckCircle2 size={13} style={{ color: 'var(--blue)' }} /> Event Posters</span>
+                  <span className="feature-pill"><CheckCircle2 size={13} style={{ color: 'var(--blue)' }} /> Social Media Visuals</span>
+                </div>
+              </div>
+              <div className="behance-action-wrap">
+                <a
+                  href={site.behance}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-solid btn-behance"
                 >
-                  <img src={g.src} alt={g.title} loading="lazy" />
-                  <figcaption>
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                      <Eye size={14} /> {g.title}
-                    </span>
-                  </figcaption>
-                </button>
-              ))}
+                  <BehanceIcon size={18} /> View Creative Portfolio on Behance <ExternalLink size={15} />
+                </a>
+                <span className="behance-subtext">Opens live portfolio at behance.net/bongominronald</span>
+              </div>
             </div>
           </Reveal>
         </div>
       </section>
-
-      {/* Lightbox Modal */}
-      {activeImg !== null && (
-        <div className="lightbox" onClick={closeLightbox} role="dialog" aria-modal="true">
-          <button className="modal-x" onClick={closeLightbox} aria-label="Close image">
-            <X size={20} />
-          </button>
-          <button className="lb-nav prev" onClick={prevImg} aria-label="Previous image">
-            <ChevronLeft size={24} />
-          </button>
-          <img
-            src={graphics[activeImg].src}
-            alt={graphics[activeImg].title}
-            onClick={(e) => e.stopPropagation()}
-          />
-          <button className="lb-nav next" onClick={nextImg} aria-label="Next image">
-            <ChevronRight size={24} />
-          </button>
-        </div>
-      )}
     </div>
   )
 }

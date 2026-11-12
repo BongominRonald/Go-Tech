@@ -5,8 +5,8 @@ import Logo from './Logo.jsx'
 import { useContactModal } from './ContactModal.jsx'
 
 const links = [
+  { to: '/#projects', label: 'Projects' },
   { to: '/#services', label: 'Services' },
-  { to: '/samples', label: 'Samples', page: true },
   { to: '/about', label: 'About', page: true },
   { to: '/#process', label: 'Process' },
   { to: '/#pricing', label: 'Pricing' },

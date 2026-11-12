@@ -3,7 +3,7 @@ import { ArrowUpRight } from 'lucide-react'
 import Logo from './Logo.jsx'
 import { useContactModal } from './ContactModal.jsx'
 import { site, tel, whatsappLink } from '../data/site.js'
-import { WhatsAppIcon, GithubIcon, LinkedinIcon } from './icons.jsx'
+import { WhatsAppIcon, GithubIcon, LinkedinIcon, BehanceIcon } from './icons.jsx'
 
 const marqueeItems = ['Talk to a human', "Tell us what you're building", 'Fixed quotes. Real launch dates.', `Thank you for considering ${site.name}`, "Let's build something that works"]
 
@@ -46,8 +46,8 @@ export default function Footer() {
           <div>
             <h4>Explore</h4>
             <ul className="foot-links">
+              <li><Link to="/#projects">Projects</Link></li>
               <li><Link to="/#services">Services</Link></li>
-              <li><Link to="/samples">Samples</Link></li>
               <li><Link to="/about">About</Link></li>
               <li><Link to="/#process">Process</Link></li>
               <li><Link to="/#pricing">Pricing</Link></li>
@@ -63,6 +63,7 @@ export default function Footer() {
             </ul>
             <div className="socials" style={{ marginTop: 18 }}>
               <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><WhatsAppIcon /></a>
+              <a href={site.behance} target="_blank" rel="noopener noreferrer" aria-label="Behance"><BehanceIcon /></a>
               <a href={site.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"><GithubIcon /></a>
               <a href={site.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><LinkedinIcon /></a>
             </div>

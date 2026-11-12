@@ -1,22 +1,22 @@
 ﻿import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { ExternalLink, ArrowRight, Globe, Lock, Sparkles, CheckCircle2 } from 'lucide-react'
+import { ExternalLink, Globe, Lock, CheckCircle2, Sparkles, Palette } from 'lucide-react'
 import { Reveal, SectionHead } from './ui.jsx'
-import { projects } from '../data/site.js'
+import { projects, site } from '../data/site.js'
+import { BehanceIcon } from './icons.jsx'
 
 export default function LiveSample() {
   const [active, setActive] = useState(0)
   const current = projects[active]
 
   return (
-    <section id="samples" className="section alt">
+    <section id="projects" className="section alt">
       <div className="deco" style={{ width: 160, height: 160, top: 80, right: 80 }} />
       <div className="container" style={{ position: 'relative' }}>
         <SectionHead
-          kicker="Featured Work"
+          kicker="Portfolio &amp; Work"
           title="Selected Projects"
-          dim="Built &amp; Deployed"
-          lead="Explore our live client applications and custom web solutions. Click any project to visit the live site."
+          dim="Information &amp; Live Systems"
+          lead="Detailed information on our production web applications. To inspect any complete platform, open the live site in a new tab."
         />
 
         {/* Tab switcher */}
@@ -36,7 +36,7 @@ export default function LiveSample() {
             ))}
           </div>
 
-          {/* Clean Mockup Card (No embedded iframe) */}
+          {/* Clean Mockup Information Card */}
           <div className="site-showcase-frame">
             <div className="browser-bar">
               <div className="dots"><i /><i /><i /></div>
@@ -52,7 +52,7 @@ export default function LiveSample() {
                 className="btn btn-sm btn-solid"
                 style={{ marginLeft: 'auto', padding: '6px 14px', fontSize: '11px' }}
               >
-                View The Site <ExternalLink size={13} />
+                View Live Site <ExternalLink size={13} />
               </a>
             </div>
 
@@ -84,11 +84,8 @@ export default function LiveSample() {
                     rel="noopener noreferrer"
                     className="btn btn-solid"
                   >
-                    View The Site <ExternalLink size={15} />
+                    View Live Site in New Tab <ExternalLink size={15} />
                   </a>
-                  <Link to="/samples" className="btn btn-ghost">
-                    All Projects <ArrowRight size={15} />
-                  </Link>
                 </div>
               </div>
 
@@ -102,7 +99,7 @@ export default function LiveSample() {
                     <div className="mock-grid">
                       <div className="mock-box highlight" style={{ borderColor: current.accent || 'var(--blue)' }}>
                         <span className="mock-label">Deployment</span>
-                        <strong>Vercel Cloud</strong>
+                        <strong>Vercel Global Cloud</strong>
                       </div>
                       <div className="mock-box">
                         <span className="mock-label">Architecture</span>
@@ -123,7 +120,7 @@ export default function LiveSample() {
                       rel="noopener noreferrer"
                       className="view-site-banner"
                     >
-                      <span>Explore {current.name} live</span>
+                      <span>Launch {current.name}</span>
                       <ExternalLink size={16} />
                     </a>
                   </div>
@@ -133,10 +130,10 @@ export default function LiveSample() {
           </div>
         </Reveal>
 
-        {/* Clean quick grid below */}
+        {/* Complete Directory of All 6 Projects (Information Only with View Live Link) */}
         <Reveal style={{ marginTop: 48 }}>
           <div className="grid-3">
-            {projects.slice(0, 3).map((p) => (
+            {projects.map((p) => (
               <div key={p.name} className="quick-site-card">
                 <div className="quick-site-header">
                   <span className="tag">{p.tag}</span>
@@ -145,13 +142,20 @@ export default function LiveSample() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="quick-site-link"
-                    title={`View ${p.name}`}
+                    title={`View ${p.name} in new tab`}
                   >
-                    View Site <ExternalLink size={13} />
+                    View Live <ExternalLink size={13} />
                   </a>
                 </div>
                 <h4>{p.name}</h4>
                 <p>{p.desc}</p>
+                <div className="card-features-list" style={{ marginTop: 4 }}>
+                  {p.features?.map((f) => (
+                    <span key={f} className="feature-item" style={{ fontSize: '10px' }}>
+                      <CheckCircle2 size={11} style={{ color: 'var(--blue)' }} /> {f}
+                    </span>
+                  ))}
+                </div>
                 <div className="quick-site-domain">
                   <Globe size={13} /> {p.domain}
                 </div>
@@ -160,10 +164,39 @@ export default function LiveSample() {
           </div>
         </Reveal>
 
-        <Reveal style={{ marginTop: 32, textAlign: 'center' }}>
-          <Link to="/samples" className="btn">
-            View All Sites &amp; Graphics <ArrowRight size={15} />
-          </Link>
+        {/* Live Behance Graphic Design Showcase Card */}
+        <Reveal style={{ marginTop: 56 }}>
+          <div className="behance-showcase-card">
+            <div className="behance-content">
+              <div className="behance-badge-row">
+                <span className="behance-pill">
+                  <BehanceIcon size={16} /> Official Portfolio
+                </span>
+                <span className="tag">Graphic &amp; Brand Design</span>
+              </div>
+              <h3 className="behance-title">Graphic Design &amp; Brand Identity on Behance</h3>
+              <p className="behance-desc">
+                From digital logos and print-ready flyers to complete brand identity systems and social media campaigns. Explore our verified creative portfolio directly on Behance.
+              </p>
+              <div className="behance-tags">
+                <span className="feature-pill"><Palette size={13} style={{ color: 'var(--blue)' }} /> Brand Identity</span>
+                <span className="feature-pill"><Sparkles size={13} style={{ color: 'var(--blue)' }} /> Flyers &amp; Posters</span>
+                <span className="feature-pill"><CheckCircle2 size={13} style={{ color: 'var(--blue)' }} /> Social Media Campaigns</span>
+                <span className="feature-pill"><CheckCircle2 size={13} style={{ color: 'var(--blue)' }} /> Print &amp; Digital Media</span>
+              </div>
+            </div>
+            <div className="behance-action-wrap">
+              <a
+                href={site.behance}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-solid btn-behance"
+              >
+                <BehanceIcon size={18} /> View Creative Portfolio on Behance <ExternalLink size={15} />
+              </a>
+              <span className="behance-subtext">Opens live portfolio at behance.net/bongominronald</span>
+            </div>
+          </div>
         </Reveal>
       </div>
     </section>

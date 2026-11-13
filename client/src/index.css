@@ -492,78 +492,46 @@ button { cursor: pointer; background: none; border: 0; }
 /* ---------- Floating Action Button (FAB) System ---------- */
 .fab-container {
   position: fixed;
-  right: 28px;
-  bottom: 26px;
-  z-index: 100;
+  right: clamp(16px, 3.5vw, 28px);
+  bottom: calc(clamp(16px, 3.5vw, 26px) + env(safe-area-inset-bottom, 0px));
+  z-index: 45;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   pointer-events: none;
 }
 
+/* Hide FAB when mobile menu drawer or contact modal is open */
+body.mobile-menu-open .fab-container,
+body.modal-open .fab-container {
+  display: none !important;
+}
+
 .fab-main-wrapper {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
   pointer-events: auto;
 }
 
-.fab-teaser {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  background: var(--card-bg);
-  color: var(--text);
-  border: 1.5px solid var(--line);
-  box-shadow: var(--shadow-md);
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  border-radius: 24px;
-  cursor: pointer;
-  animation: floatTeaser 4s ease-in-out infinite;
-  white-space: nowrap;
-}
-@keyframes floatTeaser {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-
-.fab-teaser-close {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  color: var(--muted-2);
-  font-size: 14px;
-  line-height: 1;
-  transition: color .2s;
-  cursor: pointer;
-}
-.fab-teaser-close:hover { color: var(--text); }
-
 .fab-main-btn {
   position: relative;
-  width: 58px;
-  height: 58px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: var(--blue);
   color: #000000;
   display: grid;
   place-items: center;
-  box-shadow: 0 10px 28px rgba(0, 152, 212, 0.45);
-  transition: transform .3s var(--ease), background .3s, box-shadow .3s;
+  box-shadow: 0 8px 24px rgba(0, 152, 212, 0.4);
+  transition: transform .25s var(--ease), background .25s, box-shadow .25s;
   cursor: pointer;
   border: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .fab-main-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 14px 34px rgba(0, 152, 212, 0.6);
+  transform: scale(1.06);
+  box-shadow: 0 12px 28px rgba(0, 152, 212, 0.55);
 }
 .fab-main-btn.active {
   background: var(--text);
@@ -573,7 +541,7 @@ button { cursor: pointer; background: none; border: 0; }
 
 .fab-pulse-ring {
   position: absolute;
-  inset: -6px;
+  inset: -5px;
   border-radius: 50%;
   border: 2px solid var(--blue);
   opacity: .7;
@@ -581,27 +549,27 @@ button { cursor: pointer; background: none; border: 0; }
   pointer-events: none;
 }
 @keyframes fabPulse {
-  0% { transform: scale(0.9); opacity: 0.8; }
-  70% { transform: scale(1.35); opacity: 0; }
-  100% { transform: scale(1.35); opacity: 0; }
+  0% { transform: scale(0.92); opacity: 0.8; }
+  70% { transform: scale(1.3); opacity: 0; }
+  100% { transform: scale(1.3); opacity: 0; }
 }
 
 .fab-online-dot {
   position: absolute;
-  top: 3px;
-  right: 3px;
-  width: 13px;
-  height: 13px;
+  top: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: #22c55e;
-  border: 2.5px solid var(--bg);
-  box-shadow: 0 0 8px #22c55e;
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 6px #22c55e;
 }
 
 .fab-icon-rotator {
   display: grid;
   place-items: center;
-  transition: transform .3s var(--ease);
+  transition: transform .25s var(--ease);
 }
 .fab-main-btn.active .fab-icon-rotator {
   transform: rotate(90deg);
@@ -612,13 +580,13 @@ button { cursor: pointer; background: none; border: 0; }
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: 10px;
+  margin-bottom: 12px;
   pointer-events: auto;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(16px) scale(0.95);
-  transition: opacity .3s var(--ease), transform .3s var(--ease), visibility .3s;
+  transform: translateY(14px) scale(0.94);
+  transition: opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;
 }
 .fab-menu.open {
   opacity: 1;
@@ -629,29 +597,30 @@ button { cursor: pointer; background: none; border: 0; }
 .fab-action-btn {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
   cursor: pointer;
-  transition: transform .25s var(--ease);
+  transition: transform .2s var(--ease);
   background: none;
   border: none;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 .fab-action-btn:hover {
-  transform: translateX(-4px);
+  transform: translateX(-3px);
 }
 
 .fab-action-label {
-  padding: 6px 14px;
+  padding: 5px 12px;
   background: var(--card-bg);
   color: var(--text);
   border: 1px solid var(--line);
-  box-shadow: var(--shadow-md);
-  font-size: 11.5px;
+  box-shadow: var(--shadow-sm);
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
-  border-radius: 8px;
+  border-radius: 6px;
   white-space: nowrap;
   transition: all .2s;
 }
@@ -661,16 +630,16 @@ button { cursor: pointer; background: none; border: 0; }
 }
 
 .fab-action-icon {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  box-shadow: var(--shadow-md);
-  transition: transform .2s, box-shadow .2s;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s;
 }
 .fab-action-btn:hover .fab-action-icon {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .whatsapp-icon {
@@ -691,31 +660,26 @@ button { cursor: pointer; background: none; border: 0; }
   border: 1.5px solid var(--line);
 }
 
-.fab-backdrop {
-  display: none;
-}
-@media (max-width: 768px) {
-  .fab-backdrop {
-    display: block;
-    position: fixed;
-    inset: 0;
-    z-index: 95;
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(2px);
-    pointer-events: auto;
-  }
+@media (max-width: 640px) {
   .fab-container {
-    right: 18px;
-    bottom: 20px;
-    z-index: 100;
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   }
   .fab-main-btn {
-    width: 52px;
-    height: 52px;
+    width: 50px;
+    height: 50px;
   }
   .fab-action-icon {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
+  }
+  .fab-action-label {
+    font-size: 10.5px;
+    padding: 4px 10px;
+  }
+  .fab-menu {
+    gap: 8px;
+    margin-bottom: 10px;
   }
 }
 

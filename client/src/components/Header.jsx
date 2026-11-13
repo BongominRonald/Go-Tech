@@ -28,7 +28,12 @@ export default function Header() {
   }, [])
 
   useEffect(() => { setOpen(false) }, [pathname])
-  useEffect(() => { document.body.style.overflow = open ? 'hidden' : '' }, [open])
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    if (open) document.body.classList.add('mobile-menu-open')
+    else document.body.classList.remove('mobile-menu-open')
+    return () => document.body.classList.remove('mobile-menu-open')
+  }, [open])
 
   const close = () => setOpen(false)
 

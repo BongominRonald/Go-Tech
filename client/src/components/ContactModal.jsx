@@ -16,7 +16,12 @@ export function ContactModalProvider({ children }) {
     const onKey = (e) => e.key === 'Escape' && close()
     document.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
-    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = '' }
+    document.body.classList.add('modal-open')
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+      document.body.classList.remove('modal-open')
+    }
   }, [state.open, close])
 
   return (

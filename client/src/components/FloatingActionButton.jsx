@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { MessageCircle, X, Phone, Mail, ArrowUp, Sparkles } from 'lucide-react'
+import { MessageCircle, X, Phone, Mail, ArrowUp } from 'lucide-react'
 import { site, tel, whatsappLink } from '../data/site.js'
 import { WhatsAppIcon } from './icons.jsx'
 import { useContactModal } from './ContactModal.jsx'
@@ -7,22 +7,34 @@ import { useContactModal } from './ContactModal.jsx'
 export default function FloatingActionButton() {
   const [open, setOpen] = useState(false)
   const [showScrollTop, setShowScrollTop] = useState(false)
-  const [showTeaser, setShowTeaser] = useState(true)
   const { open: openModal } = useContactModal()
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400)
+      setShowScrollTop(window.scrollY > 350)
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Auto-hide teaser text after 7 seconds so it doesn't distract
+  // Close when clicking outside
   useEffect(() => {
-    const timer = setTimeout(() => setShowTeaser(false), 7000)
-    return () => clearTimeout(timer)
-  }, [])
+    if (!open) return
+    const handleClickOutside = (e) => {
+      if (!e.target.closest('.fab-container')) {
+        setOpen(false)
+      }
+    }
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('pointerdown', handleClickOutside)
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      document.removeEventListener('pointerdown', handleClickOutside)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [open])
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -36,19 +48,19 @@ export default function FloatingActionButton() {
 
   return (
     <aside className="fab-container" aria-label="Quick Actions">
-      {/* Floating Action Menu (Speed Dial) */}
+      {/* Speed Dial Action List */}
       <div className={`fab-menu ${open ? 'open' : ''}`} role="menu" aria-hidden={!open}>
         {showScrollTop && (
           <button
             type="button"
             className="fab-action-btn"
             onClick={scrollToTop}
-            aria-label="Scroll to top of page"
+            aria-label="Back to top"
             role="menuitem"
           >
-            <span className="fab-action-label">Back to Top</span>
+            <span className="fab-action-label">Top</span>
             <div className="fab-action-icon scroll-top-icon">
-              <ArrowUp size={18} />
+              <ArrowUp size={16} />
             </div>
           </button>
         )}
@@ -57,12 +69,12 @@ export default function FloatingActionButton() {
           href={tel(site.phones[0])}
           className="fab-action-btn"
           onClick={() => setOpen(false)}
-          aria-label={`Call Ronald directly on ${site.phones[0]}`}
+          aria-label={`Call directly on ${site.phones[0]}`}
           role="menuitem"
         >
-          <span className="fab-action-label">Call Directly</span>
+          <span className="fab-action-label">Call Us</span>
           <div className="fab-action-icon phone-icon">
-            <Phone size={17} />
+            <Phone size={16} />
           </div>
         </a>
 
@@ -70,12 +82,12 @@ export default function FloatingActionButton() {
           type="button"
           className="fab-action-btn"
           onClick={() => handleAction(() => openModal())}
-          aria-label="Send direct project inquiry"
+          aria-label="Send direct message"
           role="menuitem"
         >
-          <span className="fab-action-label">Send Inquiry</span>
+          <span className="fab-action-label">Inquiry Form</span>
           <div className="fab-action-icon mail-icon">
-            <Mail size={17} />
+            <Mail size={16} />
           </div>
         </button>
 
@@ -85,62 +97,34 @@ export default function FloatingActionButton() {
           rel="noopener noreferrer"
           className="fab-action-btn"
           onClick={() => setOpen(false)}
-          aria-label="Chat directly on WhatsApp"
+          aria-label="Chat on WhatsApp"
           role="menuitem"
         >
           <span className="fab-action-label">WhatsApp Live</span>
           <div className="fab-action-icon whatsapp-icon">
-            <WhatsAppIcon size={20} />
+            <WhatsAppIcon size={18} />
           </div>
         </a>
       </div>
 
-      {/* Main Trigger Floating Action Button */}
+      {/* Main Floating Trigger Button */}
       <div className="fab-main-wrapper">
-        {showTeaser && !open && (
-          <div className="fab-teaser" onClick={() => setOpen(true)} role="status">
-            <span>Quick Connect</span>
-            <button
-              type="button"
-              className="fab-teaser-close"
-              onClick={(e) => {
-                e.stopPropagation()
-                setShowTeaser(false)
-              }}
-              aria-label="Close message"
-            >
-              ×
-            </button>
-          </div>
-        )}
-
         <button
           type="button"
           className={`fab-main-btn ${open ? 'active' : ''}`}
-          onClick={() => {
-            setOpen(!open)
-            if (showTeaser) setShowTeaser(false)
-          }}
+          onClick={() => setOpen(!open)}
           aria-expanded={open}
-          aria-label={open ? 'Close quick actions menu' : 'Open quick actions menu'}
-          title={open ? 'Close' : 'Quick Actions & Contact'}
+          aria-haspopup="true"
+          aria-label={open ? 'Close quick actions' : 'Open quick contact options'}
+          title={open ? 'Close' : 'Quick Actions'}
         >
           <span className="fab-pulse-ring" />
           <span className="fab-online-dot" />
           <div className="fab-icon-rotator">
-            {open ? <X size={24} /> : <MessageCircle size={24} />}
+            {open ? <X size={22} /> : <MessageCircle size={22} />}
           </div>
         </button>
       </div>
-
-      {/* Backdrop overlay on mobile when FAB menu is expanded */}
-      {open && (
-        <div
-          className="fab-backdrop"
-          onClick={() => setOpen(false)}
-          aria-hidden="true"
-        />
-      )}
     </aside>
   )
 }

@@ -1,9 +1,8 @@
 ﻿import { Link } from 'react-router-dom'
-import { ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import Logo from './Logo.jsx'
 import { useContactModal } from './ContactModal.jsx'
-import { site, tel, whatsappLink } from '../data/site.js'
-import { WhatsAppIcon, GithubIcon, LinkedinIcon, BehanceIcon } from './icons.jsx'
+import { site } from '../data/site.js'
 
 const marqueeItems = [
   'Talk to a human',
@@ -73,7 +72,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Main Footer Directory */}
+        {/* Main Footer Directory: Brand & Organized Navigation Links */}
         <div className="foot-grid">
           {/* Brand Identity & Mission */}
           <div className="foot-brand">
@@ -87,76 +86,30 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigation Directory */}
-          <div className="foot-col foot-explore">
-            <h4 className="foot-col-title">Navigation</h4>
+          {/* Navigation Category 1: Explore */}
+          <div className="foot-col foot-nav-col">
+            <h4 className="foot-col-title">Explore</h4>
             <ul className="foot-nav-links">
               <li><Link to="/#projects">Projects</Link></li>
               <li><Link to="/#services">Services</Link></li>
-              <li><Link to="/#process">Process</Link></li>
-              <li><Link to="/#pricing">Pricing</Link></li>
-              <li><Link to="/about">About Studio</Link></li>
+              <li><Link to="/#pricing">Pricing Plans</Link></li>
               <li><Link to="/samples">Live Demos</Link></li>
             </ul>
           </div>
 
-          {/* Direct Connect Capsule */}
-          <div className="foot-col foot-contact">
-            <div className="foot-contact-card">
-              <h4 className="foot-col-title">Direct Inquiries</h4>
-
-              <div className="foot-contact-items">
-                <div className="foot-contact-item">
-                  <span className="foot-item-label">
-                    <Mail size={12} className="foot-item-icon" /> Email
-                  </span>
-                  <a href={`mailto:${site.email}`} className="foot-email-link">
-                    {site.email}
-                  </a>
-                </div>
-
-                <div className="foot-contact-item">
-                  <span className="foot-item-label">
-                    <Phone size={12} className="foot-item-icon" /> Phone / WhatsApp
-                  </span>
-                  <div className="foot-phone-group">
-                    {site.phones.map((p) => (
-                      <a key={p} href={tel(p)} className="foot-phone-link">
-                        {p}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="foot-contact-item">
-                  <span className="foot-item-label">
-                    <MapPin size={12} className="foot-item-icon" /> Studio Location
-                  </span>
-                  <span className="foot-location-text">
-                    {site.location} · East Africa
-                  </span>
-                </div>
-              </div>
-
-              {/* Social Channels Row */}
-              <div className="foot-socials-wrap">
-                <span className="foot-socials-label">Social Channels</span>
-                <div className="socials foot-socials">
-                  <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
-                    <WhatsAppIcon size={16} />
-                  </a>
-                  <a href={site.behance} target="_blank" rel="noopener noreferrer" aria-label="Behance" title="Behance">
-                    <BehanceIcon size={16} />
-                  </a>
-                  <a href={site.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
-                    <GithubIcon size={16} />
-                  </a>
-                  <a href={site.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
-                    <LinkedinIcon size={16} />
-                  </a>
-                </div>
-              </div>
-            </div>
+          {/* Navigation Category 2: Studio */}
+          <div className="foot-col foot-nav-col">
+            <h4 className="foot-col-title">Studio</h4>
+            <ul className="foot-nav-links">
+              <li><Link to="/about">About Studio</Link></li>
+              <li><Link to="/#process">Our Process</Link></li>
+              <li><Link to="/#testimonials">Client Reviews</Link></li>
+              <li>
+                <button type="button" onClick={() => open()} className="foot-link-btn">
+                  Start an Inquiry
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -171,10 +124,6 @@ export default function Footer() {
             <Link to="/privacy">Privacy Policy</Link>
             <span className="foot-sep">·</span>
             <Link to="/terms">Terms of Service</Link>
-            <span className="foot-sep">·</span>
-            <button type="button" onClick={() => open()} className="foot-inquire-link">
-              Direct Inquiry
-            </button>
           </nav>
         </div>
       </div>

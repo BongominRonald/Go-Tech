@@ -33,9 +33,9 @@ export default function Contact() {
               </div>
               <div className="info-row">
                 <div className="info-ico"><MapPin size={18} /></div>
-                <div><small>Address</small><address style={{ fontStyle: 'normal', color: 'rgba(255,255,255,.8)' }}>{site.location}<br />East Africa<br />Worldwide</address></div>
+                <div><small>Address</small><address style={{ fontStyle: 'normal', color: 'var(--text)' }}>{site.location}<br />East Africa<br />Worldwide</address></div>
               </div>
-              <small style={{ display: 'block', marginBottom: 12, fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,.6)' }}>Social</small>
+              <small style={{ display: 'block', marginBottom: 12, fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', color: 'var(--muted-2)' }}>Social</small>
               <div className="socials">
                 <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><WhatsAppIcon /></a>
                 <a href={site.behance} target="_blank" rel="noopener noreferrer" aria-label="Behance"><BehanceIcon /></a>

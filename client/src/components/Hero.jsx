@@ -19,25 +19,48 @@ export default function Hero() {
       <div className="hero-grid-lines" />
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div className="hero-inner">
-          <div>
+          <div className="hero-text-block">
             <Reveal>
               <div className="badge">
                 Software Development · {site.location.split(',')[0]} · Serving Africa and beyond
               </div>
             </Reveal>
 
-            <h1>
-              <span className="line"><span style={{ '--d': '.15s' }}>GO-TECH</span></span>
-              <span className="line dim"><span style={{ '--d': '.28s' }}>FOR REAL</span></span>
-              <span className="line blue"><span style={{ '--d': '.41s' }}>SOLUTIONS</span></span>
-            </h1>
+            <div className="hero-headline-row">
+              <div className="hero-heading-col">
+                <h1>
+                  <span className="line"><span style={{ '--d': '.15s' }}>GO-TECH</span></span>
+                  <span className="line dim"><span style={{ '--d': '.28s' }}>FOR REAL</span></span>
+                  <span className="line blue"><span style={{ '--d': '.41s' }}>SOLUTIONS</span></span>
+                </h1>
 
-            <div className="switcher">
-              <small>PREMIUM</small>
-              <span className="sr-only">Premium softwares, graphics and digital tools</span>
-              <span className="switcher-word" aria-hidden="true">
-                <span key={i}>{rotating[i]}</span>
-              </span>
+                <div className="switcher">
+                  <small>PREMIUM</small>
+                  <span className="sr-only">Premium softwares, graphics and digital tools</span>
+                  <span className="switcher-word" aria-hidden="true">
+                    <span key={i}>{rotating[i]}</span>
+                  </span>
+                </div>
+              </div>
+
+              {/* Mobile companion mouse visual (sits beside the words, partly toned) */}
+              <div className="hero-art-mobile" aria-hidden="true">
+                <div className="hero-mouse-glow" />
+                <div className="hero-mouse-wrapper">
+                  <picture>
+                    <source srcSet="/hero-mouse.webp" type="image/webp" />
+                    <img
+                      src="/hero-mouse.png"
+                      alt="Go-Tech miniature software development office inside a mouse"
+                      className="hero-mouse-img"
+                      width="260"
+                      height="260"
+                      loading="eager"
+                      fetchPriority="high"
+                    />
+                  </picture>
+                </div>
+              </div>
             </div>
 
             <Reveal delay={200}>
@@ -55,7 +78,7 @@ export default function Hero() {
             </Reveal>
           </div>
 
-          <Reveal delay={300} className="hero-art">
+          <Reveal delay={300} className="hero-art hero-art-desktop">
             <div className="hero-mouse-glow" />
             <div className="hero-mouse-wrapper">
               <picture>

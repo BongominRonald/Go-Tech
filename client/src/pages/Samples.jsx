@@ -11,73 +11,98 @@ export default function Samples() {
         <div className="deco" style={{ width: 180, height: 180, top: 40, right: 60 }} />
         <div className="container" style={{ position: 'relative' }}>
           <Reveal>
-            <div className="kicker">Portfolio &amp; Showcase</div>
+            <div className="kicker">Software Catalog &amp; Portfolio</div>
             <h1 className="title">
               Our Work,<br /><span className="dim">Built To Perform.</span>
             </h1>
             <p className="lead">
-              Information on our production web applications, e-commerce storefronts, and creative brand design systems. Click 'View Live Site' on any project to inspect the live application in a new tab.
+              A structured catalog of deployed client software systems, e-commerce storefronts, and web platforms. Review what each product is about, and click 'View The Site' to launch any live site in a new tab.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Web Projects Showcase (Information Only with View Live Site in New Tab) */}
+      {/* Web Projects Showcase (E-Commerce Software Product Cards) */}
       <section className="section alt">
         <div className="container">
           <SectionHead
             kicker="Web Development"
-            title="Live Websites &amp; Applications"
+            title="Live Software Systems"
             lead="Review technical information and capabilities below. Open any application to see it live in a new tab."
           />
 
-          <div className="grid-3">
+          <div className="software-ecommerce-grid">
             {projects.map((p, idx) => (
-              <Reveal as="article" key={p.name} delay={(idx % 3) * 90}>
-                <div className="clean-project-card">
-                  {/* Clean Mock Browser Bar */}
-                  <div className="card-browser-bar">
-                    <div className="dots"><i /><i /><i /></div>
-                    <div className="card-browser-url">
-                      <Lock size={11} style={{ color: 'var(--blue)', flexShrink: 0 }} />
-                      <span>{p.domain}</span>
-                    </div>
-                  </div>
-
-                  {/* Card Visual Banner */}
-                  <div className="card-visual-banner" style={{ background: `linear-gradient(135deg, #121214, #080809)` }}>
-                    <div className="banner-badge-row">
-                      <span className="tag">{p.tag}</span>
-                      <span className="live-pill"><i /> Live</span>
-                    </div>
-                    <h3 className="banner-title">{p.name}</h3>
-                    <div className="banner-domain">
-                      <Globe size={13} /> https://{p.domain}
-                    </div>
-                  </div>
-
-                  {/* Card Body */}
-                  <div className="card-body-content">
-                    <p className="card-description">{p.desc}</p>
-
-                    <div className="card-features-list">
-                      {p.features?.map((f) => (
-                        <span key={f} className="feature-item">
-                          <CheckCircle2 size={13} style={{ color: 'var(--blue)' }} /> {f}
-                        </span>
-                      ))}
+              <Reveal as="article" key={p.name} delay={(idx % 3) * 80}>
+                <div className="software-product-card">
+                  {/* Product Header / Visual Showcase */}
+                  <div className="product-card-top">
+                    <div className="product-badge-row">
+                      <span className="product-category-badge">{p.tag}</span>
+                      <span className="product-live-badge">
+                        <span className="live-dot" /> Live System
+                      </span>
                     </div>
 
-                    <div className="card-action-wrap">
-                      <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-solid btn-block"
+                    {/* Product Emblem / Monogram & Name */}
+                    <div className="product-emblem-wrap">
+                      <div
+                        className="product-monogram"
+                        style={{
+                          borderColor: p.accent || 'var(--blue)',
+                          color: p.accent || 'var(--blue)',
+                          boxShadow: `0 0 24px ${p.accent ? `${p.accent}20` : 'rgba(0,174,239,0.15)'}`
+                        }}
                       >
-                        View Live Site <ExternalLink size={15} />
-                      </a>
+                        <span>{p.monogram}</span>
+                      </div>
+                      <div className="product-title-group">
+                        <span className="product-type-tag">{p.productType}</span>
+                        <h3 className="product-title">{p.name}</h3>
+                        <div className="product-domain-pill">
+                          <Lock size={11} style={{ color: p.accent || 'var(--blue)' }} />
+                          <span>https://{p.domain}</span>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+
+                  {/* Product Body: "What is it about" */}
+                  <div className="product-card-body">
+                    <div className="product-section-block">
+                      <span className="product-subhead">What It Is About</span>
+                      <p className="product-about-text">{p.desc}</p>
+                    </div>
+
+                    {/* Core Features / Specs */}
+                    <div className="product-section-block">
+                      <span className="product-subhead">Key Specifications</span>
+                      <div className="product-specs-list">
+                        {p.features?.map((f) => (
+                          <span key={f} className="product-spec-pill">
+                            <CheckCircle2 size={12} style={{ color: 'var(--blue)', flexShrink: 0 }} />
+                            <span>{f}</span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Product Card Action / CTA Bar */}
+                  <div className="product-card-footer">
+                    <div className="product-deployment-meta">
+                      <span className="meta-label">Deployment</span>
+                      <span className="meta-val">Vercel Cloud</span>
+                    </div>
+                    <a
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-solid btn-view-site"
+                      title={`View ${p.name} live in a new tab`}
+                    >
+                      View The Site <ExternalLink size={14} />
+                    </a>
                   </div>
                 </div>
               </Reveal>

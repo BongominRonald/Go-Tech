@@ -4,7 +4,7 @@ export const site = {
   wordmark: 'GO-TECH',
   tagline: 'For Real Solutions',
   slogan: 'Design · Build · Ship',
-  location: 'Mbarara, Uganda',
+  location: 'Kampala, Mbarara, Kitgum, Uganda',
   founder: 'Bongomin Ronald',
   email: 'abonga029@gmail.com',
   phones: ['+256 774 120 185', '+256 759 343 570'],

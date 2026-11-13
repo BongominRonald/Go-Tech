@@ -22,7 +22,7 @@ export default function Hero() {
           <div className="hero-text-block">
             <Reveal>
               <div className="badge">
-                Software Development · {site.location.split(',')[0]} · Serving Africa and beyond
+                Software Development · {site.location.replace(/,\s*Uganda/i, '').replace(/,\s*/g, ' · ')} · Serving Africa and beyond
               </div>
             </Reveal>
 

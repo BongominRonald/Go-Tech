@@ -5,44 +5,8 @@
    Palette: White / Black · Accent Blue (#0098d4 / #00aeef) · Inter
    ========================================================= */
 
-/* Default Theme: LIGHT MODE (Pure White Background) */
-:root {
-  --bg: #ffffff;
-  --bg-2: #f8fafc;
-  --bg-3: #f1f5f9;
-  --card-bg: #ffffff;
-  --card-top-bg: #f8fafc;
-  --card-footer-bg: #f8fafc;
-  --text: #09090b;
-  --text-dim: #475569;
-  --white: #09090b;
-  --true-white: #ffffff;
-  --true-black: #000000;
-  --logo-block: #09090b;
-  --blue: #0098d4;
-  --blue-dark: #007bb0;
-  --blue-soft: rgba(0, 152, 212, 0.08);
-  --line: #e2e8f0;
-  --line-2: rgba(0, 0, 0, 0.08);
-  --line-subtle: rgba(0, 0, 0, 0.04);
-  --muted: #475569;
-  --muted-2: #64748b;
-  --header-bg: rgba(255, 255, 255, 0.88);
-  --loader-bg: #ffffff;
-  --modal-bg: #ffffff;
-  --modal-back: rgba(0, 0, 0, 0.55);
-  --rail-text: rgba(0, 0, 0, 0.28);
-  --rail-bg: rgba(255, 255, 255, 0.65);
-  --hero-glow: rgba(0, 152, 212, 0.12);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.06);
-  --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
-  --maxw: 1280px;
-  --pad: clamp(16px, 4.5vw, 56px);
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Explicit Dark Theme: GrooveStreet Deep Black */
+/* Default Theme: DEEP BLACK (Pure Black Background) */
+:root,
 [data-theme="dark"] {
   --bg: #000000;
   --bg-2: #0a0a0a;
@@ -74,6 +38,43 @@
   --shadow-sm: none;
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.4);
   --shadow-hover: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --maxw: 1280px;
+  --pad: clamp(16px, 4.5vw, 56px);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Light Theme: Clean White (Accessible via Toggle) */
+[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-2: #f8fafc;
+  --bg-3: #f1f5f9;
+  --card-bg: #ffffff;
+  --card-top-bg: #f8fafc;
+  --card-footer-bg: #f8fafc;
+  --text: #09090b;
+  --text-dim: #475569;
+  --white: #09090b;
+  --true-white: #ffffff;
+  --true-black: #000000;
+  --logo-block: #09090b;
+  --blue: #0098d4;
+  --blue-dark: #007bb0;
+  --blue-soft: rgba(0, 152, 212, 0.08);
+  --line: #e2e8f0;
+  --line-2: rgba(0, 0, 0, 0.08);
+  --line-subtle: rgba(0, 0, 0, 0.04);
+  --muted: #475569;
+  --muted-2: #64748b;
+  --header-bg: rgba(255, 255, 255, 0.88);
+  --loader-bg: #ffffff;
+  --modal-bg: #ffffff;
+  --modal-back: rgba(0, 0, 0, 0.55);
+  --rail-text: rgba(0, 0, 0, 0.28);
+  --rail-bg: rgba(255, 255, 255, 0.65);
+  --hero-glow: rgba(0, 152, 212, 0.12);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 *, *::before, *::after { box-sizing: border-box; }

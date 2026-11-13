@@ -1,15 +1,15 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 
 const ThemeContext = createContext({
-  theme: 'light',
+  theme: 'dark',
   toggleTheme: () => {},
-  isLight: true,
+  isLight: false,
 })
 
 export const useTheme = () => useContext(ThemeContext)
 
 export function ThemeProvider({ children }) {
-  // Default to 'light' as requested: "I NEED IT IN WHITE AS DEFUALT VIA A TOGGLE BUTTON"
+  // Default to 'dark' as requested: "let the default toggle theme be black instaed of white"
   const [theme, setTheme] = useState(() => {
     try {
       const saved = localStorage.getItem('gotech_theme')
@@ -17,7 +17,7 @@ export function ThemeProvider({ children }) {
     } catch {
       /* ignore */
     }
-    return 'light'
+    return 'dark'
   })
 
   useEffect(() => {

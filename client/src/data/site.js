@@ -21,7 +21,7 @@ export const whatsappLink = (text = `Hello ${site.name}, I'd like to discuss a p
 
 // PLACEHOLDER numbers — update with your real figures before going public.
 export const stats = [
-  { count: 10, suffix: '+', label: 'Websites' },
+  { count: 10, suffix: '+', label: 'Software' },
   { count: 50, suffix: '+', label: 'Designs' },
   { count: 15, suffix: '+', label: 'Clients' },
   { count: 100, suffix: '%', label: 'Satisfaction' },
@@ -30,9 +30,9 @@ export const stats = [
 export const services = [
   {
     id: 'web',
-    title: 'Website Design & Build',
-    need: 'A website that turns visitors into calls and bookings.',
-    why: 'Your website is your shopfront — the first thing customers see. We build it fast, mobile-first, and built to bring in calls and messages.',
+    title: 'Software Design & Build',
+    need: 'Software that turns visitors into calls and bookings.',
+    why: 'Your software is your shopfront — the first thing customers see. We build it fast, mobile-first, and built to bring in calls and messages.',
     href: '#pricing-standard',
   },
   {
@@ -68,9 +68,9 @@ export const pricing = [
     features: ['Digital logos', 'Flyers & posters', 'Social media graphics', 'Print-ready files', '2 revision rounds'], cta: 'Request a Design' },
   { id: 'seo', name: 'SEO Optimization', desc: 'Get found on Google, Maps and search', price: 100000, from: true, timeline: 'Per month',
     features: ['Keyword research', 'On-page SEO', 'Google Business Profile', 'Performance report', 'Local & international search'], cta: 'Get Found' },
-  { id: 'basic', name: 'Landing Page', desc: 'Landing page or portfolio website', price: 200000, timeline: '3–5 days',
+  { id: 'basic', name: 'Landing Page', desc: 'Landing page or portfolio software', price: 200000, timeline: '3–5 days',
     features: ['One high-converting page', 'Mobile-first design', 'WhatsApp & call buttons', 'Google Maps setup', 'Full ownership'], cta: 'Get Started' },
-  { id: 'standard', name: 'Custom Website', desc: '5–10 pages', price: 500000, timeline: '2–3 weeks', popular: true,
+  { id: 'standard', name: 'Custom Software', desc: '5–10 pages', price: 500000, timeline: '2–3 weeks', popular: true,
     features: ['5–10 pages', 'Custom design', 'Form + WhatsApp integration', 'Search setup', '2 weeks support'], cta: 'Get Started' },
   { id: 'premium', name: 'Signature / E-commerce', desc: 'Online store with payments', price: 1300000, timeline: '3–6 weeks',
     features: ['Up to 12 pages + blog', 'Brand refresh', 'Online store (MoMo + Airtel)', 'Analytics setup', '30 days support'], cta: 'Contact Us' },
@@ -79,7 +79,7 @@ export const pricing = [
 // PLACEHOLDER reviews — replace each quote with a real one from that client
 // (or remove it) before going public.
 export const testimonials = [
-  { quote: 'They built my store website in two weeks. I get orders and calls every day now. Best money I have spent on my business.', name: 'Executive Scents', role: 'Fragrance Store', rating: 5 },
+  { quote: 'They built my store software in two weeks. I get orders and calls every day now. Best money I have spent on my business.', name: 'Executive Scents', role: 'Fragrance Store', rating: 5 },
   { quote: 'Professional, fast, and the WhatsApp integration saves me hours every day. My customers love it.', name: 'Khaye Tech', role: 'Electronics Retailer', rating: 5 },
   { quote: 'Fixed price, clear timeline, and they delivered exactly what they said. No stress at all.', name: 'BRX Agro Global', role: 'Import & Export', rating: 5 },
   { quote: 'My flyer looks like it came out of a print catalogue — but it took 48 hours, not two weeks.', name: 'Roomify', role: 'Rental App', rating: 5 },

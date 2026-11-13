@@ -47,7 +47,7 @@ export function Terms() {
         <Reveal>
           <div className="kicker">Legal</div>
           <h1 className="title">Terms of Service</h1>
-          <p className="lead">The terms that govern website and design deliverables from {site.name}.</p>
+          <p className="lead">The terms that govern software and design deliverables from {site.name}.</p>
 
           <h2>1. Fixed Quotes &amp; Scopes</h2>
           <p>

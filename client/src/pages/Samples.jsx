@@ -16,7 +16,7 @@ export default function Samples() {
               Our Work,<br /><span className="dim">Built To Perform.</span>
             </h1>
             <p className="lead">
-              A structured catalog of deployed client software systems, e-commerce storefronts, and web platforms. Review what each product is about, and click 'View The Site' to launch any live site in a new tab.
+              A structured catalog of deployed client software systems, e-commerce storefronts, and web platforms. Review what each product is about, and click 'View Software' to launch any live software in a new tab.
             </p>
           </Reveal>
         </div>
@@ -101,7 +101,7 @@ export default function Samples() {
                       className="btn btn-solid btn-view-site"
                       title={`View ${p.name} live in a new tab`}
                     >
-                      View The Site <ExternalLink size={14} />
+                      View Software <ExternalLink size={14} />
                     </a>
                   </div>
                 </div>

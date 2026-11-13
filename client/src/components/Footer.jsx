@@ -78,7 +78,7 @@ export default function Footer() {
           <div className="foot-brand">
             <Logo />
             <p className="foot-brand-desc">
-              {site.name} is a modern design studio & software development practice based in {site.location}. We build high-impact websites, brand systems, and digital tools for ambitious businesses across Africa and worldwide.
+              {site.name} is a modern design studio & software development practice based in {site.location}. We build high-impact software, brand systems, and digital tools for ambitious businesses across Africa and worldwide.
             </p>
             <div className="foot-status-badge">
               <span className="foot-pulse-dot" />

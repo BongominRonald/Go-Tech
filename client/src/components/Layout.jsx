@@ -59,7 +59,7 @@ export function ScrollManager() {
 }
 
 const titles = {
-  '/': `${site.name} — ${site.tagline} | Websites & Design in Uganda`,
+  '/': `${site.name} — ${site.tagline} | Software & Design in Uganda`,
   '/samples': `Samples — ${site.name}`,
   '/about': `About Us — ${site.name}`,
   '/privacy': `Privacy Policy — ${site.name}`,

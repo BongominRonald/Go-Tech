@@ -12,7 +12,7 @@ export default function LiveSample() {
           kicker="Software Portfolio"
           title="Deployed Systems"
           dim="&amp; Web Platforms"
-          lead="Each software product below details what the platform is about, its key specifications, and live status. Click 'View The Site' to inspect any complete live site in a new tab."
+          lead="Each software product below details what the platform is about, its key specifications, and live status. Click 'View Software' to inspect any complete live application in a new tab."
         />
 
         {/* E-Commerce Software Product Cards Grid */}
@@ -86,7 +86,7 @@ export default function LiveSample() {
                     className="btn btn-solid btn-view-site"
                     title={`View ${p.name} live in a new tab`}
                   >
-                    View The Site <ExternalLink size={14} />
+                    View Software <ExternalLink size={14} />
                   </a>
                 </div>
               </div>

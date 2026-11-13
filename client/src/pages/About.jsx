@@ -45,7 +45,7 @@ export default function About() {
               <span className="dim">Crafted for Growth.</span>
             </h1>
             <p className="lead">
-              {site.name} is a software and digital design agency based in {site.location}. We design and build modern websites, e-commerce stores, and digital graphics for growing businesses across East Africa and worldwide.
+              {site.name} is a software and digital design agency based in {site.location}. We design and build modern software, e-commerce stores, and digital graphics for growing businesses across East Africa and worldwide.
             </p>
           </Reveal>
         </div>
@@ -57,7 +57,7 @@ export default function About() {
           <SectionHead
             kicker="Our Principles"
             title="How We Deliver Excellence"
-            lead="We believe a great website or digital identity isn't an expensive luxury—it is the highest-leverage investment a growing business can make."
+            lead="We believe great software or a digital identity isn't an expensive luxury—it is the highest-leverage investment a growing business can make."
           />
           <div className="values">
             {values.map((v, idx) => {

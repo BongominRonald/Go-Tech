@@ -23,7 +23,7 @@ export default function Hero() {
           <div>
             <Reveal>
               <div className="badge">
-                software Development · {site.location.split(',')[0]} · Serving Africa and beyond
+                Software Development · {site.location.split(',')[0]} · Serving Africa and beyond
               </div>
             </Reveal>
 

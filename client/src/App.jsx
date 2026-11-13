@@ -3,7 +3,8 @@ import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import { ContactModalProvider } from './components/ContactModal.jsx'
 import { ThemeProvider } from './components/ThemeContext.jsx'
-import { SideRails, PageLoader, ScrollManager, TitleManager, WhatsAppFab } from './components/Layout.jsx'
+import { SideRails, PageLoader, ScrollManager, TitleManager } from './components/Layout.jsx'
+import FloatingActionButton from './components/FloatingActionButton.jsx'
 
 import Home from './pages/Home.jsx'
 import Samples from './pages/Samples.jsx'
@@ -31,7 +32,7 @@ export default function App() {
           </Routes>
         </main>
         <Footer />
-        <WhatsAppFab />
+        <FloatingActionButton />
       </ContactModalProvider>
     </ThemeProvider>
   )

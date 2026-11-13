@@ -9,10 +9,10 @@ const ThemeContext = createContext({
 export const useTheme = () => useContext(ThemeContext)
 
 export function ThemeProvider({ children }) {
-  // Default to 'dark' as requested: "let the default toggle theme be black instaed of white"
+  // Default to 'dark' across all devices (desktops, tablets, phones)
   const [theme, setTheme] = useState(() => {
     try {
-      const saved = localStorage.getItem('gotech_theme')
+      const saved = localStorage.getItem('gotech_theme_v2')
       if (saved === 'dark' || saved === 'light') return saved
     } catch {
       /* ignore */
@@ -23,7 +23,7 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     try {
       document.documentElement.setAttribute('data-theme', theme)
-      localStorage.setItem('gotech_theme', theme)
+      localStorage.setItem('gotech_theme_v2', theme)
     } catch {
       /* ignore */
     }

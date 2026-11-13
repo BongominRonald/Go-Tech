@@ -84,7 +84,7 @@ export default function About() {
           />
           <Reveal className="founder">
             <div className="founder-mark">
-              <LogoMark size={96} blocks="#ffffff" gap="#0d0d0f" />
+              <LogoMark size={96} />
             </div>
             <div>
               <h3>{site.founder}</h3>

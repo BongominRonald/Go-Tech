@@ -1,16 +1,26 @@
 ﻿<!doctype html>
-<html lang="en" dir="ltr" class="dark">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Go-Tech — For Real Solutions |Software and Graphic Design</title>
+    <title>Go-Tech — For Real Solutions | Software and Graphic Design</title>
     <meta
       name="description"
       content="Premium Software design, brand graphics, and digital tools at rates that fit a growing business. Fixed UGX quotes, launch dates in writing. Based in Uganda, serving East Africa and worldwide."
     />
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/logo.png" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('gotech_theme');
+          var theme = (saved === 'dark' || saved === 'light') ? saved : 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
 
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

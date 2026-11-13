@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { site } from '../data/site.js'
 
 // Vector recreation of the Go-Tech mark so it stays crisp on dark or light backgrounds.
-export function LogoMark({ size = 32, blocks = '#ffffff', accent = 'var(--blue)', gap = 'var(--bg)' }) {
+export function LogoMark({ size = 32, blocks = 'var(--logo-block)', accent = 'var(--blue)', gap = 'var(--bg)' }) {
   return (
     <svg width={size} height={size} viewBox="0 0 232 232" aria-hidden="true" style={{ flexShrink: 0 }}>
       <path d="M0 22 a22 22 0 0 1 22-22 h69 a22 22 0 0 1 22 22 v91 h-113z" fill={blocks} />
@@ -15,10 +15,10 @@ export function LogoMark({ size = 32, blocks = '#ffffff', accent = 'var(--blue)'
   )
 }
 
-export default function Logo({ light = false, onClick }) {
+export default function Logo({ onClick }) {
   return (
     <Link to="/" className="logo" onClick={onClick} aria-label={`${site.name} home`}>
-      <LogoMark size={28} blocks={light ? '#0a0a0a' : '#ffffff'} gap={light ? '#ffffff' : '#000000'} />
+      <LogoMark size={28} />
       <span className="logo-text">
         {site.wordmark}<span className="text-blue">.</span>
       </span>

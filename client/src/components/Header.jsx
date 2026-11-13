@@ -1,8 +1,9 @@
 ﻿import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Sun, Moon } from 'lucide-react'
 import Logo from './Logo.jsx'
 import { useContactModal } from './ContactModal.jsx'
+import { useTheme } from './ThemeContext.jsx'
 
 const links = [
   { to: '/#projects', label: 'Projects' },
@@ -16,6 +17,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const { open: openContact } = useContactModal()
+  const { theme, toggleTheme, isLight } = useTheme()
   const { pathname } = useLocation()
 
   useEffect(() => {
@@ -53,6 +55,16 @@ export default function Header() {
           <div className="header-actions">
             <button
               type="button"
+              className="theme-toggle-btn"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${isLight ? 'dark' : 'light'} mode`}
+              title={`Switch to ${isLight ? 'dark' : 'light'} mode`}
+            >
+              {isLight ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
+
+            <button
+              type="button"
               className="btn btn-sm"
               onClick={() => openContact()}
               aria-haspopup="dialog"
@@ -74,6 +86,26 @@ export default function Header() {
 
       {/* Mobile drawer */}
       <nav className={`mobile-nav ${open ? 'open' : ''}`} aria-label="Mobile" aria-hidden={!open}>
+        <div className="mobile-theme-bar">
+          <span className="mobile-theme-label">Appearance</span>
+          <button
+            type="button"
+            className="theme-toggle-pill"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${isLight ? 'dark' : 'light'} mode`}
+          >
+            {isLight ? (
+              <>
+                <Moon size={15} /> Switch to Dark
+              </>
+            ) : (
+              <>
+                <Sun size={15} /> Switch to Light
+              </>
+            )}
+          </button>
+        </div>
+
         {links.map((l) => (
           <Link key={l.to} to={l.to} onClick={close} tabIndex={open ? 0 : -1}>
             {l.label}

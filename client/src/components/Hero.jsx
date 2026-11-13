@@ -60,7 +60,7 @@ export default function Hero() {
             <div className="back" />
             <div className="frame">
               <div className="mark">
-                <LogoMark size={200} blocks="#ffffff" gap="#0d0d0f" />
+                <LogoMark size={200} />
               </div>
             </div>
             <div className="chip c1"><i /> Mobile-first</div>

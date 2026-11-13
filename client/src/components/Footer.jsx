@@ -15,7 +15,7 @@ const marqueeItems = [
 
 function UgandaFlag() {
   return (
-    <svg width="18" height="12" viewBox="0 0 30 20" aria-label="Uganda flag" role="img">
+    <svg width="18" height="12" viewBox="0 0 30 20" aria-label="Uganda flag" role="img" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
       <rect width="30" height="20" fill="#000" />
       <rect y="3.33" width="30" height="3.33" fill="#FCDC04" />
       <rect y="6.66" width="30" height="3.34" fill="#D90000" />
@@ -89,41 +89,46 @@ export default function Footer() {
             <ul className="foot-links">
               <li>
                 <small>Email</small>
-                <a href={`mailto:${site.email}`}>{site.email}</a>
+                <a href={`mailto:${site.email}`} className="foot-email-link">
+                  {site.email}
+                </a>
               </li>
               <li>
                 <small>Phone / WhatsApp</small>
                 {site.phones.map((p) => (
-                  <a key={p} href={tel(p)} style={{ display: 'block' }}>
+                  <a key={p} href={tel(p)} className="foot-phone-link">
                     {p}
                   </a>
                 ))}
               </li>
             </ul>
-            <div className="socials" style={{ marginTop: 16 }}>
-              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <div className="socials" style={{ marginTop: 14 }}>
+              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
                 <WhatsAppIcon size={16} />
               </a>
-              <a href={site.behance} target="_blank" rel="noopener noreferrer" aria-label="Behance">
+              <a href={site.behance} target="_blank" rel="noopener noreferrer" aria-label="Behance" title="Behance">
                 <BehanceIcon size={16} />
               </a>
-              <a href={site.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <a href={site.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
                 <GithubIcon size={16} />
               </a>
-              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
                 <LinkedinIcon size={16} />
               </a>
             </div>
           </div>
         </div>
 
+        {/* Centered, Elegant and Balanced Footer Bottom */}
         <div className="foot-bottom">
-          <div className="foot-bottom-left">
+          <div className="foot-bottom-row">
             <span>© {new Date().getFullYear()} {site.name}.</span>
+            <span className="foot-sep">·</span>
             <span className="made"><UgandaFlag /> Built by Ugandans</span>
           </div>
           <nav className="foot-bottom-nav">
             <Link to="/privacy">Privacy Policy</Link>
+            <span className="foot-sep">·</span>
             <Link to="/terms">Terms of Service</Link>
           </nav>
         </div>

@@ -457,10 +457,58 @@ button { cursor: pointer; background: none; border: 0; }
 .foot-links { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: .9rem; color: var(--muted); }
 .foot-links a:hover { color: var(--text); }
 .foot-links small { display: block; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 2px; }
-.foot-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 40px; padding: 26px 0 30px; border-top: 1px solid var(--line); font-size: .85rem; color: var(--muted); }
-.foot-bottom .made { display: flex; align-items: center; gap: 8px; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted-2); }
-.foot-bottom nav { display: flex; gap: 20px; flex-wrap: wrap; }
-.foot-bottom nav a:hover { color: var(--text); }
+.foot-email-link, .foot-phone-link { white-space: nowrap; display: inline-block; }
+
+.foot-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  margin-top: 48px;
+  padding: 30px 0 36px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--muted);
+  width: 100%;
+}
+.foot-bottom-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 14px;
+  text-align: center;
+}
+.foot-sep {
+  color: var(--muted-2);
+  opacity: 0.55;
+  user-select: none;
+}
+.foot-bottom .made {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+.foot-bottom-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.foot-bottom-nav a {
+  color: var(--muted);
+  transition: color .2s;
+}
+.foot-bottom-nav a:hover {
+  color: var(--text);
+}
 
 /* ---------- Samples page ---------- */
 .page-hero { padding: clamp(120px, 16vw, 170px) 0 clamp(40px, 6vw, 60px); position: relative; overflow: hidden; width: 100%; }
@@ -731,8 +779,8 @@ body.modal-open .fab-container {
   .founder { grid-template-columns: 1fr; gap: 24px; text-align: left; }
   .founder-mark { max-width: 160px; margin: 0 auto; }
   .foot-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px 20px;
+    grid-template-columns: minmax(110px, auto) 1fr;
+    gap: 32px 28px;
   }
   .foot-brand {
     grid-column: 1 / -1;
@@ -769,8 +817,8 @@ body.modal-open .fab-container {
   .field input, .field textarea, .field select { font-size: 16px !important; }
 
   .foot-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 26px 16px;
+    grid-template-columns: minmax(95px, auto) 1fr;
+    gap: 24px 18px;
   }
   .foot-brand {
     grid-column: 1 / -1;
@@ -784,15 +832,29 @@ body.modal-open .fab-container {
     font-size: .88rem;
   }
   .foot-links a {
-    word-break: break-word;
+    word-break: normal;
+  }
+  .foot-email-link {
+    white-space: nowrap !important;
+    display: inline-block;
+    font-size: clamp(11.5px, 3.4vw, 13px);
+  }
+  .foot-phone-link {
+    white-space: nowrap !important;
+    display: block;
+    font-size: 12px;
   }
   .foot-contact .socials {
     margin-top: 14px;
-    gap: 8px;
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
   }
   .foot-contact .socials a {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
   }
   .foot-cta {
     display: flex;
@@ -817,22 +879,28 @@ body.modal-open .fab-container {
   .foot-bottom {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 20px 0 24px;
-  }
-  .foot-bottom-left {
-    display: flex;
-    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 10px;
+    padding: 24px 0 28px;
     font-size: 11.5px;
+  }
+  .foot-bottom-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 10px;
+    flex-wrap: wrap;
+    text-align: center;
   }
   .foot-bottom-nav {
-    display: flex;
-    gap: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     flex-wrap: wrap;
-    font-size: 11.5px;
+    text-align: center;
   }
 
   .values { grid-template-columns: 1fr; }

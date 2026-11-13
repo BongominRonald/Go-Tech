@@ -5,14 +5,23 @@ import { useContactModal } from './ContactModal.jsx'
 import { site, tel, whatsappLink } from '../data/site.js'
 import { WhatsAppIcon, GithubIcon, LinkedinIcon, BehanceIcon } from './icons.jsx'
 
-const marqueeItems = ['Talk to a human', "Tell us what you're building", 'Fixed quotes. Real launch dates.', `Thank you for considering ${site.name}`, "Let's build something that works"]
+const marqueeItems = [
+  'Talk to a human',
+  "Tell us what you're building",
+  'Fixed quotes. Real launch dates.',
+  `Thank you for considering ${site.name}`,
+  "Let's build something that works",
+]
 
 function UgandaFlag() {
   return (
     <svg width="18" height="12" viewBox="0 0 30 20" aria-label="Uganda flag" role="img">
-      <rect width="30" height="20" fill="#000" /><rect y="3.33" width="30" height="3.33" fill="#FCDC04" />
-      <rect y="6.66" width="30" height="3.34" fill="#D90000" /><rect y="13.33" width="30" height="3.33" fill="#FCDC04" />
-      <rect y="16.66" width="30" height="3.34" fill="#D90000" /><circle cx="15" cy="10" r="4.1" fill="#fff" />
+      <rect width="30" height="20" fill="#000" />
+      <rect y="3.33" width="30" height="3.33" fill="#FCDC04" />
+      <rect y="6.66" width="30" height="3.34" fill="#D90000" />
+      <rect y="13.33" width="30" height="3.33" fill="#FCDC04" />
+      <rect y="16.66" width="30" height="3.34" fill="#D90000" />
+      <circle cx="15" cy="10" r="4.1" fill="#fff" />
     </svg>
   )
 }
@@ -21,61 +30,99 @@ export default function Footer() {
   const { open } = useContactModal()
   const row = (hidden) => (
     <div className="item" aria-hidden={hidden || undefined}>
-      {marqueeItems.map((t) => <span key={t} style={{ display: 'flex', alignItems: 'center' }}><span>{t}</span><i /></span>)}
+      {marqueeItems.map((t) => (
+        <span key={t} style={{ display: 'flex', alignItems: 'center' }}>
+          <span>{t}</span>
+          <i />
+        </span>
+      ))}
     </div>
   )
+
   return (
     <footer className="footer">
-      <button type="button" className="foot-marquee" onClick={() => open()} aria-label={`Get in touch with ${site.name}`}>
+      <button
+        type="button"
+        className="foot-marquee"
+        onClick={() => open()}
+        aria-label={`Get in touch with ${site.name}`}
+      >
         <div className="marquee" style={{ '--dur': '38s' }}>
-          <div className="marquee-track">{row(false)}{row(true)}</div>
+          <div className="marquee-track">
+            {row(false)}
+            {row(true)}
+          </div>
         </div>
       </button>
 
       <div className="container">
         <div className="foot-cta">
-          <h2>Let's build yours<span className="text-blue">.</span></h2>
-          <button className="btn btn-solid" onClick={() => open()}>Contact Us <ArrowUpRight /></button>
+          <div>
+            <h2>Let's build yours<span className="text-blue">.</span></h2>
+          </div>
+          <button className="btn btn-solid" onClick={() => open()}>
+            Contact Us <ArrowUpRight size={15} />
+          </button>
         </div>
 
         <div className="foot-grid">
-          <div>
+          <div className="foot-brand">
             <Logo />
-            <p>{site.name} is a design studio in {site.location}. We build websites, brands and graphics for growing businesses — serving Africa and beyond. <em>{site.tagline}.</em></p>
+            <p>
+              {site.name} is a design studio in {site.location}. We build websites, brands and graphics for growing businesses — serving Africa and beyond. <em>{site.tagline}.</em>
+            </p>
           </div>
-          <div>
+
+          <div className="foot-col foot-explore">
             <h4>Explore</h4>
             <ul className="foot-links">
               <li><Link to="/#projects">Projects</Link></li>
               <li><Link to="/#services">Services</Link></li>
-              <li><Link to="/about">About</Link></li>
+              <li><Link to="/about">About Us</Link></li>
               <li><Link to="/#process">Process</Link></li>
               <li><Link to="/#pricing">Pricing</Link></li>
             </ul>
           </div>
-          <div>
+
+          <div className="foot-col foot-contact">
             <h4>Contact</h4>
             <ul className="foot-links">
-              <li><small>Email</small><a href={`mailto:${site.email}`}>{site.email}</a></li>
-              <li><small>Phone / WhatsApp</small>
-                {site.phones.map((p) => <a key={p} href={tel(p)} style={{ display: 'block' }}>{p}</a>)}
+              <li>
+                <small>Email</small>
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+              </li>
+              <li>
+                <small>Phone / WhatsApp</small>
+                {site.phones.map((p) => (
+                  <a key={p} href={tel(p)} style={{ display: 'block' }}>
+                    {p}
+                  </a>
+                ))}
               </li>
             </ul>
-            <div className="socials" style={{ marginTop: 18 }}>
-              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><WhatsAppIcon /></a>
-              <a href={site.behance} target="_blank" rel="noopener noreferrer" aria-label="Behance"><BehanceIcon /></a>
-              <a href={site.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"><GithubIcon /></a>
-              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><LinkedinIcon /></a>
+            <div className="socials" style={{ marginTop: 16 }}>
+              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <WhatsAppIcon size={16} />
+              </a>
+              <a href={site.behance} target="_blank" rel="noopener noreferrer" aria-label="Behance">
+                <BehanceIcon size={16} />
+              </a>
+              <a href={site.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <GithubIcon size={16} />
+              </a>
+              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <LinkedinIcon size={16} />
+              </a>
             </div>
           </div>
         </div>
 
         <div className="foot-bottom">
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 20 }}>
-            <span>© {new Date().getFullYear()} {site.name}. {site.tagline}.</span>
+          <div className="foot-bottom-left">
+            <span>© {new Date().getFullYear()} {site.name}.</span>
             <span className="made"><UgandaFlag /> Built by Ugandans</span>
           </div>
-          <nav>
+          <nav className="foot-bottom-nav">
             <Link to="/privacy">Privacy Policy</Link>
             <Link to="/terms">Terms of Service</Link>
           </nav>

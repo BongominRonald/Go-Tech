@@ -1,6 +1,5 @@
 ﻿import { useEffect, useState } from 'react'
 import { ArrowRight, ArrowDown } from 'lucide-react'
-import { LogoMark } from './Logo.jsx'
 import { CountUp, Reveal } from './ui.jsx'
 import { site, stats } from '../data/site.js'
 
@@ -57,11 +56,20 @@ export default function Hero() {
           </div>
 
           <Reveal delay={300} className="hero-art">
-            <div className="back" />
-            <div className="frame">
-              <div className="mark">
-                <LogoMark size={200} />
-              </div>
+            <div className="hero-mouse-glow" />
+            <div className="hero-mouse-wrapper">
+              <picture>
+                <source srcSet="/hero-mouse.webp" type="image/webp" />
+                <img
+                  src="/hero-mouse.png"
+                  alt="Go-Tech miniature software development office inside a computer mouse"
+                  className="hero-mouse-img"
+                  width="540"
+                  height="540"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+              </picture>
             </div>
             <div className="chip c1"><i /> Mobile-first</div>
             <div className="chip c2"><i /> Fixed UGX quotes</div>

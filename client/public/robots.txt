@@ -1,0 +1,12 @@
+# =========================================================================
+# Go-Tech Solutions — Robots.txt for Search Engine Optimization
+# https://go-tech-solutions.vercel.app/
+# =========================================================================
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://go-tech-solutions.vercel.app/sitemap.xml
+Host: https://go-tech-solutions.vercel.app

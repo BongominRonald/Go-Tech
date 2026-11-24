@@ -58,16 +58,70 @@ export function ScrollManager() {
   return null
 }
 
-const titles = {
-  '/': `${site.name} — ${site.tagline} | Software & Design in Uganda`,
-  '/samples': `Samples — ${site.name}`,
-  '/about': `About Us — ${site.name}`,
-  '/privacy': `Privacy Policy — ${site.name}`,
-  '/terms': `Terms of Service — ${site.name}`,
+const pageMeta = {
+  '/': {
+    title: `${site.name} — ${site.tagline} | Software & Graphic Design in Uganda`,
+    desc: 'Go-Tech Solutions crafts premium software, high-performance web applications, digital tools, and brand identity graphics in Uganda with fixed UGX quotes and written timelines.',
+    canonical: 'https://go-tech-solutions.vercel.app/',
+  },
+  '/samples': {
+    title: `Live Samples & Portfolio — ${site.name} Solutions`,
+    desc: 'Explore real-world software applications, e-commerce storefronts, and brand design projects built and shipped by Go-Tech Solutions in Uganda and East Africa.',
+    canonical: 'https://go-tech-solutions.vercel.app/samples',
+  },
+  '/about': {
+    title: `About Go-Tech Solutions — Software Engineering & Design Agency`,
+    desc: 'Learn about Go-Tech Solutions, our engineering philosophy, our founder Ronald Bongomin, and our mission to provide high-caliber software and branding in Uganda.',
+    canonical: 'https://go-tech-solutions.vercel.app/about',
+  },
+  '/privacy': {
+    title: `Privacy Policy — ${site.name} Solutions`,
+    desc: 'Go-Tech Solutions privacy policy outlining our transparent data governance and client confidentiality principles.',
+    canonical: 'https://go-tech-solutions.vercel.app/privacy',
+  },
+  '/terms': {
+    title: `Terms of Service — ${site.name} Solutions`,
+    desc: 'Terms of service, delivery policies, and fixed-quote software guarantees from Go-Tech Solutions.',
+    canonical: 'https://go-tech-solutions.vercel.app/terms',
+  },
 }
+
 export function TitleManager() {
   const { pathname } = useLocation()
-  useEffect(() => { document.title = titles[pathname] || `Page not found — ${site.name}` }, [pathname])
+
+  useEffect(() => {
+    const meta = pageMeta[pathname] || {
+      title: `Page Not Found — ${site.name}`,
+      desc: 'The requested page could not be found on Go-Tech Solutions.',
+      canonical: `https://go-tech-solutions.vercel.app${pathname}`,
+    }
+
+    // Update document title
+    document.title = meta.title
+
+    // Update meta description
+    let descTag = document.querySelector('meta[name="description"]')
+    if (descTag) {
+      descTag.setAttribute('content', meta.desc)
+    }
+
+    // Update canonical link
+    let canonicalTag = document.querySelector('link[rel="canonical"]')
+    if (canonicalTag) {
+      canonicalTag.setAttribute('href', meta.canonical)
+    }
+
+    // Update Open Graph tags
+    let ogTitle = document.querySelector('meta[property="og:title"]')
+    if (ogTitle) ogTitle.setAttribute('content', meta.title)
+
+    let ogDesc = document.querySelector('meta[property="og:description"]')
+    if (ogDesc) ogDesc.setAttribute('content', meta.desc)
+
+    let ogUrl = document.querySelector('meta[property="og:url"]')
+    if (ogUrl) ogUrl.setAttribute('content', meta.canonical)
+  }, [pathname])
+
   return null
 }
 
